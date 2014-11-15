@@ -4,10 +4,6 @@ class CurrentGame
   end
 
   def game
-    @game ||= begin
-      Game.with_advisory_lock(:fetch_current_game) do
-        Game.last || Game.create!
-      end
-    end
+    Game.last || Game.create!
   end
 end

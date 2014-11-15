@@ -25,6 +25,10 @@ class GameState
     state == GameState::States::WAITING_FOR_PLAYERS
   end
 
+  def in_progress?
+    state == GameState::States::IN_PROGRESS
+  end
+
   def name
     state.to_s.titleize
   end

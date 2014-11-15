@@ -3,6 +3,7 @@ Rails.application.routes.draw do
 
   resources :games, only: [ :show ] do
     resource :participations, only: [ :create ]
+    get :info
   end
 
   resource :waiting_room, only: [ :show ], controller: :waiting_room

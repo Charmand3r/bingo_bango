@@ -5,10 +5,14 @@ class GamesController < ApplicationController
   def show
   end
 
+  def info
+    render :json => { :number => @number = CurrentNumber.new(@game).number, :state => @game_state.state }
+  end
+
   private
 
   def prepare_current_game
-    @game       = Game.find(params[:id])
+    @game       = Game.find(params[:id] || params[:game_id])
     @game_state = GameState.new(@game)
   end
 

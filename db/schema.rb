@@ -18,6 +18,7 @@ ActiveRecord::Schema.define(version: 20141115042411) do
 
   create_table "games", force: true do |t|
     t.integer  "winner_id"
+    t.integer  "drawn_numbers", default: [], null: false, array: true
     t.datetime "created_at"
     t.datetime "updated_at"
   end
