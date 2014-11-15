@@ -1,5 +1,6 @@
 class GameState
-  TIME_TO_START    = 1.minute
+  #TIME_TO_START    = 1.minute
+  TIME_TO_START    = 10.seconds
   MIN_PARTICIPANTS = 2
 
   module States
@@ -28,6 +29,10 @@ class GameState
 
   def in_progress?
     state == GameState::States::IN_PROGRESS
+  end
+
+  def finished?
+    state == GameState::States::FINISHED
   end
 
   def name

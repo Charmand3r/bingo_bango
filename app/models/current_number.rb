@@ -1,5 +1,6 @@
 class CurrentNumber
-  DRAW_TIME = (1.5).seconds
+  #DRAW_TIME = (1.5).seconds
+  DRAW_TIME = 0.seconds
 
   def initialize(game)
     @game       = game

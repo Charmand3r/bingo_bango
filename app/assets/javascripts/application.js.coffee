@@ -26,14 +26,23 @@ class GameUpdater
   run: ->
     $.ajax( url: "/games/#{@gameId}/info").done ( (data) =>
       @_updateLastNumber(data.number)
-      if data.state == 'in_progress'
-        setTimeout( (=> @run() ), 500)
-      else if data.state == 'finished'
+      @_updatePlayerCount(data.players_count)
+      @_updateGameState(data.state)
+
+      if data.state == 'finished'
         window.location.reload()
+      else
+        setTimeout( (=> @run() ), 500)
     )
 
   _updateLastNumber: (number) ->
     $('.last-game-number').text(number)
+
+  _updatePlayerCount: (playersCount) ->
+    $('.players-count').text(playersCount)
+
+  _updateGameState: (gameState) ->
+    $('.game-state').text(gameState.replaceAll('_', ' '))
 
 class NumberMarker
   constructor: (link) ->

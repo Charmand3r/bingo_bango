@@ -3,9 +3,9 @@
 
 <h2>Game #<%= @game.id %></h2>
 
-<h3>State: <%= @game_state.name %></h3>
+<h3>State: <span class="game-state"><%= @game_state.name %></span></h3>
 
-<h3>Players: <%= @game.participations.count %></h3>
+<h3>Players: <span class="players-count"><%= @game.participations.count %></span></h3>
 
 <h3>Last number: <span class="last-game-number"> <%= @game.drawn_numbers.last %></span></h3>
 
@@ -19,19 +19,21 @@
   }
 </style>
 
-<table>
-  <% @participation.numbers.in_groups_of(3).transpose.each do |row| %>
-    <tr>
+<% unless @game_state.finished? %>
+  <table>
+    <% @participation.numbers.in_groups_of(3).transpose.each do |row| %>
+      <tr>
 
-    <% row.each do |number| %>
-      <% if number.present? %>
-        <td class="number"><%= link_to number, game_mark_number_path(@game, number: number), 'data-mark-number' => number %></td>
-      <% else %>
-        <td class="number--absent">&nbsp;</td>
+      <% row.each do |number| %>
+        <% if number.present? %>
+          <td class="number"><%= link_to number, game_mark_number_path(@game, number: number), 'data-mark-number' => number %></td>
+        <% else %>
+          <td class="number--absent">&nbsp;</td>
+        <% end %>
       <% end %>
+      </tr>
     <% end %>
-    </tr>
-  <% end %>
-</table>
+  </table>
 
-<%= button_to "Fuckin' BINGO", game_bingo_path(@game), :method => :POST, :class => 'bingo', :style => 'display: none;' %>
+  <%= button_to "Fuckin' BINGO", game_bingo_path(@game), :method => :POST, :class => 'bingo', :style => 'display: none;' %>
+<% end %>
