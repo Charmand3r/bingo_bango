@@ -1,9 +1,13 @@
 class CurrentGame
-  def id
-    game.id
-  end
-
   def game
-    Game.last || Game.create!
+    Game.with_advisory_lock(:current_game) do
+      last_game = Game.last
+
+      if last_game.present? && GameState.new(last_game).waiting_for_players?
+        last_game
+      else
+        Game.create!
+      end
+    end
   end
 end

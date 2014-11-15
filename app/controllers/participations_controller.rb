@@ -2,18 +2,16 @@ class ParticipationsController < ApplicationController
   before_filter :prepare_game
 
   def create
-    if @game_state.waiting_for_players?
+    if Participation.find_by(player_id: current_player.player.id, game_id: @game.id).blank?
       Participation.create!(game: @game, player: current_player.player, numbers: ParticipationNumberGenerator.generate)
-      redirect_to game_path(@game)
-    else
-      redirect_to waiting_room_path, flash: { notice: 'The game has started already' }
     end
+    redirect_to game_path(@game)
   end
 
   private
 
   def prepare_game
-    @game       = Game.find(params[:id] || params[:game_id])
+    @game       = CurrentGame.new.game
     @game_state = GameState.new(@game)
   end
 end
