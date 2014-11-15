@@ -1,0 +1,5 @@
+TODO:
+  - [ ] Add leaderboard to homepage
+  - [ ] Get levi to update design (responsive)
+  - [ ] Countdown until start
+  - [ ] Setup puma
