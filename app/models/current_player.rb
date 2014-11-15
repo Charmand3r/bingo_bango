@@ -11,8 +11,6 @@ class CurrentPlayer
     @session[:current_player_id] = player_id
   end
 
-  private
-
   def player
     @session[:current_player_id].present? && Player.find_by(id: @session[:current_player_id])
   end

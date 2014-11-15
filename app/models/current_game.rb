@@ -14,11 +14,11 @@ class CurrentGame
     game.created_at < TIME_TO_START.ago
   end
 
-  private
-
   def game
-    Game.last || Game.create!
+    @game ||= (Game.last || Game.create!)
   end
+
+  private
 
   def url_helpers
     Rails.application.routes.url_helpers
