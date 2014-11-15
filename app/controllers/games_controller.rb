@@ -22,11 +22,10 @@ class GamesController < ApplicationController
     @game.with_lock do
       if @game_state.in_progress? && @participation.numbers.compact.all? { |number| @game.drawn_numbers.include?(number) }
         @game.update_attributes(winner: current_player.player)
-        head 200
-      else
-        head 422
       end
     end
+
+    redirect_to game_path(@game)
   end
 
   private
