@@ -1,8 +1,12 @@
+<% provide :game_id, @game.id.to_s %>
+
 <h2>Game #<%= @game.id %></h2>
 
 <h3>State: <%= @game_state.name %></h3>
 
 <h3>Players: <%= @game.participations.count %></h3>
+
+<h3 >Last number: <span class="last-game-number"> <%= @game.drawn_numbers.last %></span></h3>
 
 <table>
   <% @participation.numbers.in_groups_of(3).transpose.each do |row| %>
