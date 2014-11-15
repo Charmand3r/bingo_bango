@@ -1,5 +1,6 @@
 class GameState
-  TIME_TO_START = 10
+  TIME_TO_START    = 1.minute
+  MIN_PARTICIPANTS = 2
 
   module States
     WAITING_FOR_PLAYERS = :waiting_for_players
@@ -14,7 +15,7 @@ class GameState
   def state
     if @game.winner.present?
       States::FINISHED
-    elsif @game.created_at > TIME_TO_START.ago
+    elsif @game.created_at > TIME_TO_START.ago || @game.participations.size < MIN_PARTICIPANTS
       States::WAITING_FOR_PLAYERS
     else
       States::IN_PROGRESS
