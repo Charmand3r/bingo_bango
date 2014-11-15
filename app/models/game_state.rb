@@ -1,6 +1,5 @@
 class GameState
-  #TIME_TO_START    = 1.minute
-  TIME_TO_START    = 10.seconds
+  TIME_TO_START    = 1.minute
   MIN_PARTICIPANTS = 2
 
   module States
