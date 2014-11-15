@@ -5,6 +5,6 @@ Currently Game #<%= @current_game.number %> is <%= @current_game.current_state %
 <% if @current_game.in_progress? %>
   <%= link_to 'Join the waiting room', waiting_room_path %>
 <% else %>
-  <%= link_to 'Join current game', game_participation_path(:game_id => @current_game.id), :method => :POST %>
+  <%= link_to 'Join current game', game_participations_path(:game_id => @current_game.id), :method => :POST %>
 <% end %>
 
