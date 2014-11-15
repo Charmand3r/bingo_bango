@@ -6,7 +6,11 @@
 
 <h3>Players: <%= @game.participations.count %></h3>
 
-<h3 >Last number: <span class="last-game-number"> <%= @game.drawn_numbers.last %></span></h3>
+<h3>Last number: <span class="last-game-number"> <%= @game.drawn_numbers.last %></span></h3>
+
+<% if @game.winner.present? %>
+  <h3> Winner: <span style="color: <%= Player::Color.new(@game.winner).to_s %>"><%= @game.winner.name %></span></h3>
+<% end %>
 
 <style>
   .number:hover, .number--active {
