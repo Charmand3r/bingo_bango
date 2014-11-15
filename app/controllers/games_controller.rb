@@ -1,5 +1,5 @@
 class GamesController < ApplicationController
-  before_filter :prepare_current_game
+  before_filter :prepare_game
   before_filter :prepare_participation
 
   def show
@@ -30,7 +30,7 @@ class GamesController < ApplicationController
 
   private
 
-  def prepare_current_game
+  def prepare_game
     @game       = Game.find(params[:id] || params[:game_id])
     @game_state = GameState.new(@game)
   end
