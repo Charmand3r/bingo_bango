@@ -36,13 +36,15 @@ class GameUpdater
     )
 
   _updateLastNumber: (number) ->
-    $('.last-game-number').text(number)
+    if number?
+      $('.last-game-number-wrapper').show()
+      $('.last-game-number').text(number)
 
   _updatePlayerCount: (playersCount) ->
     $('.players-count').text(playersCount)
 
   _updateGameState: (gameState) ->
-    $('.game-state').text(gameState.replaceAll('_', ' '))
+    $('.game-state').text(gameState.replace(/_/g, ' '))
 
 class NumberMarker
   constructor: (link) ->
