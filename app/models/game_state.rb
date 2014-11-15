@@ -12,10 +12,10 @@ class GameState
   end
 
   def state
-    if @game.created_at > TIME_TO_START.ago
-      States::WAITING_FOR_PLAYERS
-    elsif @game.winner.present?
+    if @game.winner.present?
       States::FINISHED
+    elsif @game.created_at > TIME_TO_START.ago
+      States::WAITING_FOR_PLAYERS
     else
       States::IN_PROGRESS
     end

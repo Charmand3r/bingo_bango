@@ -5,6 +5,7 @@ Rails.application.routes.draw do
     resource :participations, only: [ :create ]
     get :info
     get :mark_number
+    post :bingo
   end
 
   resource :waiting_room, only: [ :show ], controller: :waiting_room
