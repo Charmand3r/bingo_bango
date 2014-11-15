@@ -3,6 +3,7 @@ class GamesController < ApplicationController
   before_filter :prepare_participation
 
   def show
+    @color = Player::Color.new(current_player.player).to_s
   end
 
   def info

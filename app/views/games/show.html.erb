@@ -8,12 +8,22 @@
 
 <h3 >Last number: <span class="last-game-number"> <%= @game.drawn_numbers.last %></span></h3>
 
+<style>
+  .number:hover, .number--active {
+    background-color: <%= @color %>
+  }
+</style>
+
 <table>
   <% @participation.numbers.in_groups_of(3).transpose.each do |row| %>
     <tr>
 
     <% row.each do |number| %>
-      <td><%= number || '&nbsp;'.html_safe %></td>
+      <% if number.present? %>
+        <td class="number"><%= link_to number, game_mark_number_path(@game, number: number), 'data-mark-number' => number %></td>
+      <% else %>
+        <td class="number--absent">&nbsp;</td>
+      <% end %>
     <% end %>
     </tr>
   <% end %>

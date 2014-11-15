@@ -19,15 +19,12 @@
 #
 #
 
-
 class GameUpdater
   constructor: (gameId) ->
     @gameId = gameId
 
   run: ->
-    $.ajax(
-      url: "/games/#{@gameId}/info"
-    ).done ( (data) =>
+    $.ajax( url: "/games/#{@gameId}/info").done ( (data) =>
       @_updateLastNumber(data.number)
       setTimeout( (=> @run() ), 500)
     )
@@ -35,6 +32,19 @@ class GameUpdater
   _updateLastNumber: (number) ->
     $('.last-game-number').text(number)
 
+class NumberMarker
+  constructor: (link) ->
+    @link = link
+
+  mark: ->
+    $.ajax( url: @link.attr('href')).done ( =>
+      @link.removeClass('number').addClass('number--active')
+    )
+
 $(document).ready ->
   if $('body').data('game-id') != ''
     new GameUpdater($('body').data('game-id')).run()
+
+  $('[data-mark-number]').click (e) ->
+    e.preventDefault()
+    new NumberMarker($(e.target)).mark()
