@@ -6,7 +6,7 @@ class GamesController < ApplicationController
   end
 
   def info
-    render :json => { :number => @number = CurrentNumber.new(@game).number, :state => @game_state.state }
+    render :json => { :number => @number = CurrentNumber.new(@game).number, :state => @game_state.state, :players_count => @game.participations.count }
   end
 
   def mark_number
