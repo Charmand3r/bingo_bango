@@ -1,7 +1,7 @@
 class ParticipationsController < ApplicationController
   def create
     if current_game_state.waiting_for_players?
-      Participation.create!(game: current_game.game, player: current_player.player)
+      Participation.create!(game: current_game.game, player: current_player.player, numbers: ParticipationNumberGenerator.generate)
       redirect_to game_path(current_game.game)
     else
       redirect_to waiting_room_path, flash: { notice: 'The game has started already' }

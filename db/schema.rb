@@ -25,8 +25,9 @@ ActiveRecord::Schema.define(version: 20141115042411) do
   add_index "games", ["winner_id"], name: "index_games_on_winner_id", using: :btree
 
   create_table "participations", force: true do |t|
-    t.integer  "player_id"
-    t.integer  "game_id"
+    t.integer  "player_id",  null: false
+    t.integer  "game_id",    null: false
+    t.integer  "numbers",    null: false, array: true
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -35,7 +36,7 @@ ActiveRecord::Schema.define(version: 20141115042411) do
   add_index "participations", ["player_id"], name: "index_participations_on_player_id", using: :btree
 
   create_table "players", force: true do |t|
-    t.string   "name"
+    t.string   "name",       null: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end

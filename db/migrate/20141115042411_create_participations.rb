@@ -1,8 +1,9 @@
 class CreateParticipations < ActiveRecord::Migration
   def change
     create_table :participations do |t|
-      t.references :player
-      t.references :game
+      t.references :player, null: false
+      t.references :game, null: false
+      t.integer    :numbers, array: true, null: false
 
       t.timestamps
     end
