@@ -1,3 +1,16 @@
 <h2>Game #<%= @game.id %></h2>
 
 <h3>State: <%= @game_state.name %></h3>
+
+
+
+<table>
+  <% @participation.numbers.in_groups_of(3).transpose.each do |row| %>
+    <tr>
+
+    <% row.each do |number| %>
+      <td><%= number || '&nbsp;'.html_safe %></td>
+    <% end %>
+    </tr>
+  <% end %>
+</table>
