@@ -32,7 +32,7 @@ class GameUpdater
       if data.state == 'finished'
         window.location.reload()
       else
-        setTimeout( (=> @run() ), 500)
+        setTimeout( (=> @run() ), 750)
     )
 
   _updateLastNumber: (number) ->
