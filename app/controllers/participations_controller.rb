@@ -15,6 +15,6 @@ class ParticipationsController < ApplicationController
   end
 
   def current_game_state
-    @current_game_state ||= CurrentGameState.new(current_game.game)
+    @current_game_state ||= GameState.new(current_game.game)
   end
 end

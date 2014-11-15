@@ -8,8 +8,8 @@ class GamesController < ApplicationController
   private
 
   def prepare_current_game
-    @game               = Game.find(params[:game_id])
-    @current_game_state = CurrentGameState.new(@current_game.game)
+    @game       = Game.find(params[:id])
+    @game_state = GameState.new(@game)
   end
 
   def prepare_participation

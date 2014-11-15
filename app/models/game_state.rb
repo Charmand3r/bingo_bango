@@ -1,8 +1,10 @@
-class CurrentGameState
+class GameState
   TIME_TO_START = 10
 
   module States
     WAITING_FOR_PLAYERS = :waiting_for_players
+    FINISHED            = :finished
+    IN_PROGRESS         = :in_progress
   end
 
   def initialize(game)
@@ -12,13 +14,15 @@ class CurrentGameState
   def state
     if @game.created_at > TIME_TO_START.ago
       States::WAITING_FOR_PLAYERS
+    elsif @game.winner.present?
+      States::FINISHED
     else
-      # raise 'unknown state'
+      States::IN_PROGRESS
     end
   end
 
   def waiting_for_players?
-    state == CurrentGameState::States::WAITING_FOR_PLAYERS
+    state == GameState::States::WAITING_FOR_PLAYERS
   end
 
   def name
@@ -28,8 +32,5 @@ class CurrentGameState
   def progress
     Game.with_advisory_lock(:game_state) do
     end
-  end
-
-  def name
   end
 end

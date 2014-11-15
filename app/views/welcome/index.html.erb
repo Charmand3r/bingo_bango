@@ -1,6 +1,6 @@
 <h2>Welcome To bingo</h2>
 
-Currently Game #<%= @current_game.number %> is <%= @current_game_state.name %>.
+Currently Game #<%= @current_game.id %> is <%= @current_game_state.name %>.
 
 <% if @current_game_state.waiting_for_players? %>
   <%= link_to 'Join current game', game_participations_path(:game_id => @current_game.id), :method => :POST %>
