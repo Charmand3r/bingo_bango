@@ -1,9 +1,10 @@
 class CurrentGame
   TIME_TO_START = 10
 
-  def number
+  def id
     game.id
   end
+  alias :number :id
 
   def current_state
     in_progress? ? 'in progress' : 'waiting to start'
@@ -11,10 +12,6 @@ class CurrentGame
 
   def in_progress?
     game.created_at < TIME_TO_START.ago
-  end
-
-  def current_game_url
-    url_helpers.game_path(number)
   end
 
   private
