@@ -1,11 +1,20 @@
 class ParticipationsController < ApplicationController
   def create
-    current_game = CurrentGame.new
-    if current_game.in_progress?
-      redirect_to waiting_room_path, flash: { notice: 'The game has started already' }
-    else
+    if current_game_state.waiting_for_players?
       Participation.create!(game: current_game.game, player: current_player.player)
       redirect_to game_path(current_game.game)
+    else
+      redirect_to waiting_room_path, flash: { notice: 'The game has started already' }
     end
+  end
+
+  private
+
+  def current_game
+    @current_game ||= CurrentGame.new
+  end
+
+  def current_game_state
+    @current_game_state ||= CurrentGameState.new(current_game.game)
   end
 end

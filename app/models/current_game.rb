@@ -1,26 +1,12 @@
 class CurrentGame
-  TIME_TO_START = 10
-
   def id
     game.id
   end
   alias :number :id
 
-  def current_state
-    in_progress? ? 'in progress' : 'waiting to start'
-  end
-
-  def in_progress?
-    game.created_at < TIME_TO_START.ago
-  end
-
   def game
-    @game ||= (Game.last || Game.create!)
-  end
-
-  private
-
-  def url_helpers
-    Rails.application.routes.url_helpers
+    Game.with_advisory_lock(:fetch_current_game) do
+      @game ||= (Game.last || Game.create!)
+    end
   end
 end
