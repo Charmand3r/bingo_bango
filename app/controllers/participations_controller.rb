@@ -5,6 +5,7 @@ class ParticipationsController < ApplicationController
     if Participation.find_by(player_id: current_player.player.id, game_id: @game.id).blank?
       Participation.create!(game: @game, player: current_player.player, numbers: ParticipationNumberGenerator.generate)
     end
+
     redirect_to game_path(@game)
   end
 
