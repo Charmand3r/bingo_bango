@@ -39,6 +39,9 @@ class NumberMarker
   mark: ->
     $.ajax( url: @link.attr('href')).done ( =>
       @link.removeClass('number').addClass('number--active')
+      # LOL HARDCODED AT FIFTEEN
+      if $('.number--active').length == 15
+        $('.bingo').show()
     )
 
 $(document).ready ->
@@ -48,3 +51,6 @@ $(document).ready ->
   $('[data-mark-number]').click (e) ->
     e.preventDefault()
     new NumberMarker($(e.target)).mark()
+
+
+    
