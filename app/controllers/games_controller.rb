@@ -9,6 +9,14 @@ class GamesController < ApplicationController
     render :json => { :number => @number = CurrentNumber.new(@game).number, :state => @game_state.state }
   end
 
+  def mark_number
+    if @game.drawn_numbers.include?(params[:number].to_i)
+      head 200
+    else
+      head 422
+    end
+  end
+
   private
 
   def prepare_current_game
