@@ -26,7 +26,10 @@ class GameUpdater
   run: ->
     $.ajax( url: "/games/#{@gameId}/info").done ( (data) =>
       @_updateLastNumber(data.number)
-      setTimeout( (=> @run() ), 500)
+      if data.state == 'in_progress'
+        setTimeout( (=> @run() ), 500)
+      else if data.state == 'finished'
+        window.location.reload()
     )
 
   _updateLastNumber: (number) ->
@@ -46,11 +49,9 @@ class NumberMarker
 
 $(document).ready ->
   if $('body').data('game-id') != ''
-    new GameUpdater($('body').data('game-id')).run()
+    unless $('body').data('game-state') == 'finished'
+      new GameUpdater($('body').data('game-id')).run()
 
   $('[data-mark-number]').click (e) ->
     e.preventDefault()
     new NumberMarker($(e.target)).mark()
-
-
-    

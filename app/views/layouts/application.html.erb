@@ -6,7 +6,7 @@
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
-<body data-game-id="<%= yield :game_id %>">
+<body data-game-id="<%= yield :game_id %>" data-game-state="<%= yield :game_state %>">
 
 <%= render :partial => 'layouts/flash' %>
 <%= yield %>
