@@ -1,21 +1,35 @@
 #header
+  $_logo: 'logo.svg'
+  $_width: 300px
+  $_height: 43px
+
   padding: 20px 0
   border-bottom: 1px solid #eee
   margin-bottom: 15px
+  position: relative
+  z-index: 3
+  background: #fff
 
   h1
-    $_logo: 'logo.svg'
-    $_width: 300px
-    $_height: 43px
     margin: 0 auto
     padding: 0
     &, a
       display: block
       width: $_width
       height: $_height
+
     a
       background: image-url($_logo) no-repeat 0 0
       background-size: 100% 100%
       font-size: 0
       color: transparent
       text-indent: -100px
+
+
+  @media only screen and (max-width: 900px)
+    padding-top: 10px
+    padding-bottom: 10px
+    h1
+      &, a
+        width: $_width / 2
+        height: $_height / 2

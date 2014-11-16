@@ -1,23 +1,19 @@
 $brand-primary: #5b5641
 $brand-secondary: #e8c11c
 
-@import header
-@import intro
-@import forms
-@import fonts
-@import leaderboard
-@import welcome
-
 *
-  font: normal 16px/1.5 "Helvetica Neue", Helvetica, sans-serif
   box-sizing: border-box
   -webkit-touch-callout: none
   -webkit-user-select: none
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0)
 
 body
+  font: normal 16px/1.5 "Helvetica Neue", Helvetica, sans-serif
   margin: 0
   padding: 0
+
+input, button
+  font: normal 16px/1.5 "Helvetica Neue", Helvetica, sans-serif
 
 h1, h2, h3, h4, h5, h6
   padding: 0
@@ -33,36 +29,6 @@ input, textarea
 .errors
   color: red
   font-weight: bold
-
-table.bingo
-  border: 1px solid black
-  border-spacing: 0
-  border-collapse: collapse
-  width: 400px
-
-  td
-    border: 1px solid black
-    width: (100% / 9)
-    font-weight: bold
-    text-align: center
-
-.number
-  &:hover
-    cursor: hand
-
-  a
-    display: block
-    text-decoration: none
-    color: black
-    padding-top: 8px
-    padding-bottom: 8px
-
-.bingo
-  margin-top: 20px
-  width: 200px
-  background: red
-  font-size: 48px
-  width: auto
 
 .game-state
   text-transform: capitalize
@@ -84,3 +50,12 @@ table.bingo
     text-align: center
   .player-name
     vertical-align: top
+
+@import header
+@import intro
+@import forms
+@import fonts
+@import leaderboard
+@import welcome
+@import bingo
+@import winner
