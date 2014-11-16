@@ -1,17 +1,23 @@
-<h2>Welcome To bingo</h2>
+<div class="welcome">
+  <h2>It&rsquo;s BingoBango Time</h2>
 
-<%= link_to 'Join a game', participations_path, method: :POST %>
+  <%= link_to 'Join a game', participations_path, method: :POST, class: 'button' %>
 
-<h3>Top 5 players </h3>
-
-<table>
-  <tr>
-    <th>Name</th>
-    <th>Wins</th>
-  </tr>
-  <% @leaderboard.each do |player, wins| %>
-    <tr>
-      <td style="color: <%= Player::Color.new(player).to_s %>"><%= player.name %></td>
-      <td><%= wins %></td>
-    </tr>
-  <% end %>
+  <div class="leaderboard">
+    <h3>Top 5 Players</h3>
+    <table>
+      <tr>
+        <th>Name</th>
+        <th>Wins</th>
+      </tr>
+      <% @leaderboard.each do |player, wins| %>
+        <tr>
+          <td>
+            <%= player_tag(player) %>
+          </td>
+          <td><%= wins %></td>
+        </tr>
+      <% end %>
+    </table>
+  </div>
+</div>

@@ -28,7 +28,7 @@
 </style>
 
 <% unless @game_state.finished? %>
-  <table>
+  <table class="bingo">
     <% @participation.numbers.in_groups_of(3).transpose.each do |row| %>
       <tr>
 

@@ -1,16 +1,19 @@
 #header
-  padding: 10px
+  padding: 20px 0
   border-bottom: 1px solid #eee
 
   h1
+    $_logo: 'logo.svg'
+    $_width: 300px
+    $_height: 43px
     margin: 0 auto
     padding: 0
     &, a
       display: block
-      width: 150px
-      height: 22px
+      width: $_width
+      height: $_height
     a
-      background: image-url('logo.svg') no-repeat 0 0
+      background: image-url($_logo) no-repeat 0 0
       background-size: 100% 100%
       font-size: 0
       color: transparent
