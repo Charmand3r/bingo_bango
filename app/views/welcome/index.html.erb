@@ -3,27 +3,29 @@
 
   <%= link_to 'Join a game', participations_path, method: :POST, class: 'button' %>
 
-  <div class="leaderboard">
-    <table>
-      <thead>
-        <th colspan="2">
-          <h3>Top 5 Players</h3>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <th>Name</th>
-          <th>Wins</th>
-        </tr>
-        <% @leaderboard.each do |player, wins| %>
-          <tr>
-            <td>
-              <%= player_tag(player) %>
-            </td>
-            <td><%= wins %></td>
+  <% if @leaderboard.present? %>
+    <div class="leaderboard">
+      <table>
+        <thead>
+          <th colspan="2">
+            <h3>Top 5 Players</h3>
           </tr>
-        <% end %>
-      </tbody>
-    </table>
+        </thead>
+        <tbody>
+          <tr>
+            <th>Name</th>
+            <th>Wins</th>
+          </tr>
+          <% @leaderboard.each do |player, wins| %>
+            <tr>
+              <td>
+                <%= player_tag(player) %>
+              </td>
+              <td><%= wins %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
   </div>
-</div>
+<% end %>
