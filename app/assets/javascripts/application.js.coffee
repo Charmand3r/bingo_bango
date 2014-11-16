@@ -26,7 +26,7 @@ class GameUpdater
   run: ->
     $.ajax( url: "/games/#{@gameId}/info").done ( (data) =>
       @_updateLastNumber(data.number)
-      @_updatePlayerCount(data.players_count)
+      @_updatePlayers(data.players)
       @_updateGameState(data.state)
 
       if data.state == 'finished'
@@ -40,8 +40,13 @@ class GameUpdater
       $('.last-game-number-wrapper').show()
       $('.last-game-number').text(number)
 
-  _updatePlayerCount: (playersCount) ->
-    $('.players-count').text(playersCount)
+  _updatePlayers: (players) ->
+    $('.players-count').text(players.length)
+    $('.players-list').empty()
+
+    $.each(players, ( (index, player) ->
+      $('.players-list').append("<span style='background-color: #{player.color}'>#{player.name}</span><br />")
+    ) )
 
   _updateGameState: (gameState) ->
     $('.game-state').text(gameState.replace(/_/g, ' '))

@@ -7,7 +7,11 @@ class GamesController < ApplicationController
   end
 
   def info
-    render :json => { :number => @number = CurrentNumber.new(@game).number, :state => @game_state.state, :players_count => @game.participations.count }
+    render :json => { 
+      :number  => @number = CurrentNumber.new(@game).number, 
+      :state   => @game_state.state, 
+      :players => @game.participations.map(&:player).flatten.map { |player| { :name => player.name, :color => Player::Color.new(player).to_s } }
+    }
   end
 
   def mark_number

@@ -8,6 +8,7 @@
 <h3>State: <span class="game-state"><%= @game_state.name %></span></h3>
 
 <h3>Players: <span class="players-count"><%= @game.participations.count %></span></h3>
+<span class="players-list"></span>
 
 <div class="last-game-number-wrapper" style="display: none">
   <h3>Last number: <span class="last-game-number"> <%= @game.drawn_numbers.last %></span></h3>

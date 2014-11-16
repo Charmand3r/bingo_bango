@@ -8,6 +8,6 @@ class Player::Color
   end
 
   def hue
-    @player.name.hash % (360 + 1)
+    "#{@player.id}#{@player.name}".hash % (360 + 1)
   end
 end
