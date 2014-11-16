@@ -18,11 +18,11 @@ input[type="text"]
     background: lighten($_color, 5%)
 
 input[type="submit"], button, .button
-  @import %button
+  @extend %button
 
 .button-alt
   $_color: $brand-secondary
-  @import %button
+  @extend %button
   background: $_color
   border: 1px solid darken($_color, 5%)
   &:hover
