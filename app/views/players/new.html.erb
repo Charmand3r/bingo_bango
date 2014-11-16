@@ -1,14 +1,14 @@
-<h2>Welcome To bingo</h2>
+<div class="intro">
+  <p>What&rsquo;s your name player?</p>
 
-<p>Select your user name to begin:</p>
-
-<%= form_for @player_form, :url => player_path do |form| %>
-  <div class="errors">
-    <%= form.object.errors.full_messages.to_sentence %>
-  </div>
-
-  <%= form.label :name %>
-  <%= form.text_field :name %>
-
-  <%= form.submit "Let's bingo" %>
-<% end %>
+  <%= form_for @player_form, :url => player_path do |form| %>
+    <div class="errors">
+      <%= form.object.errors.full_messages.to_sentence %>
+    </div>
+    <div class="field">
+      <%= form.label :name %>
+      <%= form.text_field :name, placeholder: 'Name' %>
+    </div>
+    <%= form.submit 'Bingo go go go!' %>
+  <% end %>
+</div>

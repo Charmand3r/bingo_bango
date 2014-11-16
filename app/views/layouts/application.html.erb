@@ -2,14 +2,18 @@
 <html>
 <head>
   <title>BingoBango</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
+  <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no,user-scalable=0,minimal-ui" />
 </head>
 <body data-game-id="<%= yield :game_id %>" data-game-state="<%= yield :game_state %>">
-
-<%= render :partial => 'layouts/flash' %>
-<%= yield %>
-
+  <%= render partial: 'layouts/flash' %>
+  <header id="header">
+    <h1><a href="<%= root_path %>">BingoBango</a></h1>
+  </header>
+  <main>
+    <%= yield %>
+  </main>
 </body>
 </html>
