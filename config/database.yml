@@ -7,3 +7,13 @@ development:
   username: postgres
   password:
   min_messages: warning
+
+production:
+  host: localhost
+  adapter: postgresql
+  encoding: unicode
+  database: bingo_bango_production
+  pool: 500
+  username: postgres
+  password:
+  min_messages: warning
