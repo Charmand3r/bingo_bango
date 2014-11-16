@@ -3,7 +3,8 @@ class GamesController < ApplicationController
   before_filter :prepare_participation
 
   def show
-    @player_hue = Player::Color.new(current_player.player).hue
+    @player_hue   = Player::Color.new(current_player.player).hue
+    @first_player = @game.participations.first.player == current_player.player
   end
 
   def info
