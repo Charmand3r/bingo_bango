@@ -1,7 +1,7 @@
 TODO:
   - [x] Add leaderboard to homepage
-  - [ ] Display current players when in game
-  - [ ] Get levi to update design (responsive)
-  - [ ] Add a countdown until start
+  - [x] Display current players when in game
+  - [x] Get levi to update design (responsive)
+  - [x] Add a countdown until start
   - [x] Setup puma
   - [ ] Look into using Server Sent Events (SSE)
