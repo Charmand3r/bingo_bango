@@ -7,7 +7,7 @@
   <%= csrf_meta_tags %>
   <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no,user-scalable=0,minimal-ui" />
 </head>
-<body data-game-id="<%= yield :game_id %>" data-game-state="<%= yield :game_state %>">
+<body data-game-id="<%= yield :game_id %>" data-game-state="<%= yield :game_state %>" data-first-player="<%= yield :game_first_player %>">
   <%= render partial: 'layouts/flash' %>
   <header id="header">
     <h1><a href="<%= root_path %>">BingoBango</a></h1>

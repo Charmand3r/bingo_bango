@@ -3,14 +3,16 @@ class GamesController < ApplicationController
   before_filter :prepare_participation
 
   def show
-    @player_hue = Player::Color.new(current_player.player).hue
+    @player_hue   = Player::Color.new(current_player.player).hue
+    @first_player = @game.participations.first.player == current_player.player
   end
 
   def info
     render :json => { 
-      :number  => @number = CurrentNumber.new(@game).number, 
-      :state   => @game_state.state, 
-      :players => @game.participations.map(&:player).flatten.map { |player| { :name => player.name, :color => Player::Color.new(player).to_s } }
+      :number     => @number = CurrentNumber.new(@game).number,
+      :state      => @game_state.state,
+      :game_start => @game_state.game_start_unix_time,
+      :players    => @game.participations.map(&:player).flatten.map { |player| { :name => player.name, :color => Player::Color.new(player).to_s } }
     }
   end
 
