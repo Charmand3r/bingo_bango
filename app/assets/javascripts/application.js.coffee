@@ -50,7 +50,7 @@ class GameUpdater
 
   _updateGameState: (data) ->
     $('.game-state').text(data.state.replace(/_/g, ' '))
-    if data.state == 'waiting_for_players'
+    if data.state == 'waiting_to_start'
       diff = parseInt((new Date(data.game_start * 1000) - new Date()) / 1000.0)
       if diff > 0
         # LOL HARDCODED AT 2 PLAYERS!!!!!~!!!
