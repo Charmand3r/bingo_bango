@@ -1,5 +1,5 @@
 TODO:
-  - [ ] Add leaderboard to homepage
+  - [x] Add leaderboard to homepage
   - [ ] Display current players when in game
   - [ ] Get levi to update design (responsive)
   - [ ] Add a countdown until start
