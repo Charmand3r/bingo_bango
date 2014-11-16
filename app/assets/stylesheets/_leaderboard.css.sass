@@ -7,10 +7,14 @@
   th, td
     padding: 6px
 
-  th
-    background: $brand-primary
-    color: #fff
+  thead
+    th
+      background: $brand-primary
+      color: #fff
 
-  tr:nth-child(odd)
-    td
-      background: mix(#fff, $brand-primary, 96%)
+  tbody
+    th
+      border-bottom: 1px solid mix(#fff, $brand-primary, 80%)
+    tr:nth-child(odd)
+      td, th
+        background: mix(#fff, $brand-primary, 96%)
