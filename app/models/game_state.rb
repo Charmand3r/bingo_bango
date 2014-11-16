@@ -38,8 +38,7 @@ class GameState
     state.to_s.titleize
   end
 
-  def progress
-    Game.with_advisory_lock(:game_state) do
-    end
+  def game_start_unix_time
+    (@game.created_at + TIME_TO_START).to_i
   end
 end

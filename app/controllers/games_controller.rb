@@ -8,9 +8,10 @@ class GamesController < ApplicationController
 
   def info
     render :json => { 
-      :number  => @number = CurrentNumber.new(@game).number, 
-      :state   => @game_state.state, 
-      :players => @game.participations.map(&:player).flatten.map { |player| { :name => player.name, :color => Player::Color.new(player).to_s } }
+      :number     => @number = CurrentNumber.new(@game).number,
+      :state      => @game_state.state,
+      :game_start => @game_state.game_start_unix_time,
+      :players    => @game.participations.map(&:player).flatten.map { |player| { :name => player.name, :color => Player::Color.new(player).to_s } }
     }
   end
 

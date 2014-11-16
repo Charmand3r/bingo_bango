@@ -27,7 +27,7 @@ class GameUpdater
     $.ajax( url: "/games/#{@gameId}/info").done ( (data) =>
       @_updateLastNumber(data.number)
       @_updatePlayers(data.players)
-      @_updateGameState(data.state)
+      @_updateGameState(data)
 
       if data.state == 'finished'
         window.location.reload()
@@ -48,8 +48,19 @@ class GameUpdater
       $('.players-list').append("<span style='background-color: #{player.color}'>#{player.name}</span><br />")
     ) )
 
-  _updateGameState: (gameState) ->
-    $('.game-state').text(gameState.replace(/_/g, ' '))
+  _updateGameState: (data) ->
+    $('.game-state').text(data.state.replace(/_/g, ' '))
+    if data.state == 'waiting_for_players'
+      diff = parseInt((new Date(data.game_start * 1000) - new Date()) / 1000.0)
+      if diff > 0
+        # LOL HARDCODED AT 2 PLAYERS!!!!!~!!!
+        if data.players.length < 2
+          $('.game-state').append("<span class='wait-message'> (Game will begin in #{diff} seconds if there are 2 or more players)</span>")
+        else
+          $('.game-state').append("<span class='wait-message'> (Game will begin in #{diff} seconds)</span>")
+      else
+        $('.game-state').append("<span class='wait-message'> (Game will begin when another player joins)</span>")
+
 
 class NumberMarker
   constructor: (link) ->
@@ -63,11 +74,11 @@ class NumberMarker
         $('.bingo').show()
     )
 
-$(document).ready ->
+ $(document).ready ->
   if $('body').data('game-id') != ''
     unless $('body').data('game-state') == 'finished'
       new GameUpdater($('body').data('game-id')).run()
-
+ 
   $('[data-mark-number]').click (e) ->
     e.preventDefault()
     new NumberMarker($(e.target)).mark()
