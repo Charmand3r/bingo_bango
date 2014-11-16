@@ -13,12 +13,12 @@
         </thead>
         <tbody>
           <tr>
-            <th>Name</th>
+            <th class="leaderboard-player-name">Name</th>
             <th>Wins</th>
           </tr>
           <% @leaderboard.each do |player, wins| %>
             <tr>
-              <td>
+              <td class="leaderboard-player-name">
                 <%= player_tag(player) %>
               </td>
               <td><%= wins %></td>
