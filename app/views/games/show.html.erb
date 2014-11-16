@@ -21,6 +21,7 @@
   <div class="game">
 
     <header>
+      <span class="game-wait-message"></span>
       <div class="game-number">Game <%= @game.id %></div>
       <div class="game-state"><%= @game_state.name %></div>
       <div class="last-game-number-wrapper last-game-number" style="display: none"><%= @game.drawn_numbers.last %></div>

@@ -76,11 +76,13 @@ class GameUpdater
       if diff > 0
         # LOL HARDCODED AT 2 PLAYERS!!!!!~!!!
         if data.players.length < 2
-          $('.game-state').append("<span class='wait-message'>Game will begin in #{diff} seconds if there are 2 or more players</span>")
+          $('.game-wait-message').text("Game will begin in #{diff} seconds if there are 2 or more players")
         else
-          $('.game-state').append("<span class='wait-message'>Game will begin in #{diff} seconds</span>")
+          $('.game-wait-message').text("Game will begin in #{diff} seconds")
       else
-        $('.game-state').append("<span class='wait-message'>Game will begin when another player joins</span>")
+        $('.game-wait-message').text("Game will begin when another player joins")
+    else
+      $('.game-wait-message').remove()
 
 
 class NumberMarker
